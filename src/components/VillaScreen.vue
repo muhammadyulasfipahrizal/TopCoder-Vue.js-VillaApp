@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1 class="title">{{ msg }}</h1>
-    <div class="inputs">
+    <div class="list-input">
       <LoadNumber @updateLoadNumber="handleLoadNumberUpdate" class="input input-align" />
       <StartDate class="input" />
       <EndDate class="input" />
@@ -9,6 +9,7 @@
       <SortInput class="input input-align" />
       <SearchInput @update-search-term="updateSearchTerm" @search="performSearch" class="search-input" />
     </div>
+    <ListProperty class="list-property"/>
   </div>
 </template>
 
@@ -22,6 +23,7 @@ import EndDate from "@/components/listinputs/EndDate.vue";
 import FilterInput from "@/components/listinputs/FilterInput.vue";
 import SortInput from "@/components/listinputs/SortInput.vue";
 import SearchInput from "@/components/listinputs/SearchInput.vue";
+import ListProperty from '@/components/listproperty/ListProperty.vue';
 
 export default {
   name: "VillaScreen",
@@ -33,6 +35,7 @@ export default {
     FilterInput,
     SortInput,
     SearchInput,
+    ListProperty,
   },
 
   props: {
@@ -44,21 +47,22 @@ export default {
 
 <style scoped>
 .container {
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 .title {
   margin-bottom: 40px;
 }
 
-.inputs {
+.list-input {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
+}
+
+.list-property {
+  justify-content: start;
 }
 
 .input {

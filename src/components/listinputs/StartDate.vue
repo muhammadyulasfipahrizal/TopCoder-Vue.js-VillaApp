@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label for="datepicker">Select Start date:</label>
+    <label for="datepicker">Select Start date</label>
     <input
       id="datepicker"
       type="date"
