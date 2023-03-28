@@ -5,7 +5,7 @@
       <StartDate class="input" />
       <EndDate class="input" />
       <FilterInput class="input input-align" />
-      <SortInput class="input input-align" />
+      <SortInput @update-sort-order="handleSortOrderChange" class="input input-align" />
       <SearchInput @update-search-term="updateSearchTerm" @search="performSearch" class="search-input" />
     </div>
     <ListProperty/>
@@ -23,14 +23,14 @@
 </template>
 
 <script>
-import RowUi from './RowUi.vue';
+import ListProperty from '../listproperty/ListProperty';
 import LoadNumber from '../listinputs/LoadNumber';
 import StartDate from "../listinputs/StartDate.vue";
 import EndDate from "../listinputs/EndDate.vue";
 import FilterInput from "../listinputs/FilterInput.vue";
 import SortInput from "../listinputs/SortInput.vue";
 import SearchInput from "../listinputs/SearchInput.vue";
-import ListProperty from '../listproperty/ListProperty';
+import RowUi from './RowUi.vue';
 
 import VillaData from './VillaData.js';
 
@@ -63,10 +63,13 @@ export default {
         filtered = filtered.filter(villa => villa.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
       }
       filtered = filtered.sort((a, b) => {
-        if (this.sortOrder === 'asc') {
-          return a[this.sortBy] - b[this.sortBy];
-        } else {
-          return b[this.sortBy] - a[this.sortBy];
+        switch (this.sortOrder) {
+          case 'ascending':
+            return a.name.localeCompare(b.name);
+          case 'descending':
+            return b.name.localeCompare(a.name);
+          default:
+            return 0;
         }
       });
       return filtered;
@@ -90,11 +93,15 @@ export default {
     },
     updateSearchTerm(term) {
       this.searchTerm = term;
+    },
+    handleSortOrderChange(sortOrder) {
+      this.sortOrder = sortOrder;
     }
   },
   data() {
     return {
       searchTerm: '',
+      sortOrder: '',
       villas: VillaData,
     };
   },

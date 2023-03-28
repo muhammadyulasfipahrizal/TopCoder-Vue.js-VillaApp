@@ -4,9 +4,8 @@
       Sort
     </button>
     <ul class="dropdown-menu" aria-labelledby="loadNumberDropdown">
-      <li><a class="dropdown-item" href="#" @click="setLoadNumber('a-z')">A-Z</a></li>
-      <li><a class="dropdown-item" href="#" @click="setLoadNumber('z-a')">Z-A</a></li>
-      <li><a class="dropdown-item" href="#" @click="setLoadNumber('cheapest')">Cheapest</a></li>
+      <li><a class="dropdown-item" href="#" @click="setSortOrder('ascending')">Ascending</a></li>
+      <li><a class="dropdown-item" href="#" @click="setSortOrder('descending')">Descending</a></li>
     </ul>
   </div>
 </template>
@@ -16,17 +15,9 @@ export default {
   name: "SortInput",
 
   methods: {
-    setLoadNumber(num) {
-      this.$emit("updateLoadNumber", num);
+    setSortOrder(order) {
+      this.$emit("updateSortOrder", order);
     },
   },
 };
 </script>
-
-<style scoped>
-/* Optional styling for the dropdown button */
-.dropdown-toggle {
-  background-color: #7c7d83;
-  color: #fff;
-}
-</style>
