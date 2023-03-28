@@ -1,7 +1,7 @@
 <template>
   <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="loadNumberDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-      5
+      {{ selectedLoadNumber }}
     </button>
     <ul class="dropdown-menu" aria-labelledby="loadNumberDropdown">
       <li><a class="dropdown-item" href="#" @click="setLoadNumber(5)">5</a></li>
@@ -15,8 +15,15 @@
 export default {
   name: "LoadNumber",
 
+  data() {
+    return {
+      selectedLoadNumber: 5,
+    };
+  },
+
   methods: {
     setLoadNumber(num) {
+      this.selectedLoadNumber = num;
       this.$emit("updateLoadNumber", num);
     },
   },
@@ -24,7 +31,6 @@ export default {
 </script>
 
 <style scoped>
-/* Optional styling for the dropdown button */
 .dropdown-toggle {
   background-color: #7c7d83;
   color: #fff;

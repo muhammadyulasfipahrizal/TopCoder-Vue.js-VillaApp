@@ -1,45 +1,32 @@
 <template>
   <div class="container">
     <h1 class="title">{{ msg }}</h1>
-    <div class="list-input">
-      <LoadNumber @updateLoadNumber="handleLoadNumberUpdate" class="input input-align" />
-      <StartDate class="input" />
-      <EndDate class="input" />
-      <FilterInput class="input input-align" />
-      <SortInput class="input input-align" />
-      <SearchInput @update-search-term="updateSearchTerm" @search="performSearch" class="search-input" />
-    </div>
-    <ListProperty class="list-property"/>
+    <RowComponent :selected-rows-per-page="selectedRowsPerPage" @update:selected-rows-per-page="handleSelectedRowsPerPageUpdate"  />
   </div>
 </template>
 
-
-
-
 <script>
-import LoadNumber from "@/components/listinputs/LoadNumber.vue";
-import StartDate from "@/components/listinputs/StartDate.vue";
-import EndDate from "@/components/listinputs/EndDate.vue";
-import FilterInput from "@/components/listinputs/FilterInput.vue";
-import SortInput from "@/components/listinputs/SortInput.vue";
-import SearchInput from "@/components/listinputs/SearchInput.vue";
-import ListProperty from '@/components/listproperty/ListProperty.vue';
+import RowComponent from "@/components/rows/RowComponent.vue";
 
 export default {
   name: "VillaScreen",
 
   components: {
-    StartDate,
-    EndDate,
-    LoadNumber,
-    FilterInput,
-    SortInput,
-    SearchInput,
-    ListProperty,
+    RowComponent,
   },
 
   props: {
     msg: String,
+  },
+  data() {
+    return {
+      selectedRowsPerPage: 5,
+    };
+  },
+  methods: {
+    handleSelectedRowsPerPageUpdate(selectedRowsPerPage) {
+      this.selectedRowsPerPage = selectedRowsPerPage;
+    },
   },
 };
 </script>
@@ -61,7 +48,7 @@ export default {
   align-items: center;
 }
 
-.list-property {
+.rows {
   justify-content: start;
 }
 
