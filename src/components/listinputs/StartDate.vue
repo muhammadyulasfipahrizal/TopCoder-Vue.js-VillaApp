@@ -1,11 +1,11 @@
 <template>
   <div>
-    <label for="datepicker">Select Start date</label>
     <input
       id="datepicker"
       type="date"
       class="form-control"
       v-model="selectedDate"
+      @change="$emit('selected-date', selectedDate)"
     >
   </div>
 </template>
@@ -17,6 +17,19 @@ export default {
     return {
       selectedDate: null
     };
+  },
+  computed: {
+    selectedDateObject() {
+      return this.selectedDate ? new Date(this.selectedDate) : null;
+    }
+  },
+  watch: {
+    selectedDate(newValue, oldValue) {
+    console.log('Selected date changed: ', newValue);
+    if (newValue && newValue !== oldValue) {
+      this.$emit('selected-date', newValue);
+      }
+    }
   }
 };
 </script>

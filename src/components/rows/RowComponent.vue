@@ -2,8 +2,7 @@
   <div class="container">
     <div class="list-input">
       <load-number @updateLoadNumber="handleLoadNumberChange" class="input input-align" />
-      <StartDate class="input" />
-      <EndDate class="input" />
+      <StartDate v-model="selectedDate" class="input input-align"/>
       <FilterInput class="input input-align" />
       <SortInput @update-sort-order="handleSortOrderChange" class="input input-align" />
       <SearchInput @update-search-term="updateSearchTerm" @search="performSearch" class="search-input" />
@@ -23,10 +22,11 @@
 </template>
 
 <script>
+import mitt from 'mitt';
+
 import ListProperty from '../listproperty/ListProperty';
 import LoadNumber from '../listinputs/LoadNumber';
 import StartDate from "../listinputs/StartDate.vue";
-import EndDate from "../listinputs/EndDate.vue";
 import FilterInput from "../listinputs/FilterInput.vue";
 import SortInput from "../listinputs/SortInput.vue";
 import SearchInput from "../listinputs/SearchInput.vue";
@@ -40,7 +40,6 @@ export default {
   components: {
     RowUi,
     StartDate,
-    EndDate,
     LoadNumber,
     FilterInput,
     SortInput,
@@ -54,31 +53,59 @@ export default {
     },
   },
   computed: {
+    selectedDateFormatted() {
+      if (!this.selectedDate) {
+        return null;
+      }
+      const date = new Date(this.selectedDate);
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+      const day = date.getDate();
+      return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+    },
     slicedVillas() {
-      return this.filteredVillas.slice(0, this.selectedRowsPerPage);
+      const filteredVillas = this.filteredVillas;
+      return filteredVillas ? filteredVillas.slice(0, this.selectedRowsPerPage) : [];
     },
     filteredVillas() {
-      let filtered = this.villas;
-      if (this.searchTerm !== '') {
-        filtered = filtered.filter(villa => villa.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
-      }
-      filtered = filtered.sort((a, b) => {
-        switch (this.sortOrder) {
-          case 'ascending':
-            return a.name.localeCompare(b.name);
-          case 'descending':
-            return b.name.localeCompare(a.name);
-          default:
-            return 0;
-        }
-      });
-      return filtered;
+    let filtered = this.villas;
+
+    // filter by search term
+    if (this.searchTerm !== '') {
+      filtered = filtered.filter(villa => villa.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
     }
+
+    // filter by selected date
+    if (this.selectedDateFormatted) {
+      filtered = filtered.filter(villa => {
+        const availableDates = villa.availableDates;
+        return availableDates.some(date => date === this.selectedDateFormatted);
+      });
+    }
+
+    // sort by selected order
+    filtered = filtered.sort((a, b) => {
+      switch (this.sortOrder) {
+        case 'ascending':
+          return a.name.localeCompare(b.name);
+        case 'descending':
+          return b.name.localeCompare(a.name);
+        default:
+          return 0;
+      }
+    });
+
+    return filtered.slice(0, this.selectedRowsPerPage);
   },
+},
   watch: {
     selectedRowsPerPage() {
       this.$forceUpdate();
     },
+    selectedDate() {
+      console.log('selectedDate', this.selectedDate);
+      this.emitter.emit('selected-date', this.selectedDate);
+    }
   },
   methods: {
     performSearch() {
@@ -103,7 +130,14 @@ export default {
       searchTerm: '',
       sortOrder: '',
       villas: VillaData,
+      selectedDate: null,
+      emitter: mitt(),
     };
+  },
+  created() {
+    this.emitter.on('selected-date', (date) => {
+      this.selectedDate = date;
+    });
   },
 }
 </script>

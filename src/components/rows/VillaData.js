@@ -7,6 +7,7 @@ export default [
         price: 'Rp 125.000',
         capacity: '2-4 People',
         amenities: 'Toilet, Free Wifi',
+        availableDate: '2023-03-28'
     },
     {
         id: 2,
@@ -16,6 +17,7 @@ export default [
         price: 'Rp 200.000',
         capacity: '4-6 People',
         amenities: 'Toilet, Free Wifi, Private Pool',
+        availableDate: '2023-03-29'
     },
     {
         id: 3,
@@ -25,6 +27,7 @@ export default [
         price: 'Rp 350.000',
         capacity: '6-8 People',
         amenities: 'Toilet, Free Wifi, Private Beach Access',
+        availableDate: '2023-03-30'
     },
     {
         id: 4,
