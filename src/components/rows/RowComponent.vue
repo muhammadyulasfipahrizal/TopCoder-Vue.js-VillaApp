@@ -64,39 +64,35 @@ export default {
       return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
     },
     slicedVillas() {
-      const filteredVillas = this.filteredVillas;
-      return filteredVillas ? filteredVillas.slice(0, this.selectedRowsPerPage) : [];
+      return this.filteredVillas.slice(0, this.selectedRowsPerPage);
     },
     filteredVillas() {
-    let filtered = this.villas;
+      let filtered = this.villas;
 
-    // filter by search term
-    if (this.searchTerm !== '') {
-      filtered = filtered.filter(villa => villa.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
-    }
-
-    // filter by selected date
-    if (this.selectedDateFormatted) {
-      filtered = filtered.filter(villa => {
-        const availableDates = villa.availableDates;
-        return availableDates.some(date => date === this.selectedDateFormatted);
-      });
-    }
-
-    // sort by selected order
-    filtered = filtered.sort((a, b) => {
-      switch (this.sortOrder) {
-        case 'ascending':
-          return a.name.localeCompare(b.name);
-        case 'descending':
-          return b.name.localeCompare(a.name);
-        default:
-          return 0;
+      // filter by search term
+      if (this.searchTerm !== '') {
+        filtered = filtered.filter(villa => villa.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
       }
-    });
 
-    return filtered.slice(0, this.selectedRowsPerPage);
-  },
+      // filter by selected date
+      if (this.selectedDateFormatted) {
+        filtered = filtered.filter(villa => villa.availableDates.includes(this.selectedDateFormatted));
+      }
+
+      // sort by selected order
+      filtered = filtered.sort((a, b) => {
+        switch (this.sortOrder) {
+          case 'ascending':
+            return a.name.localeCompare(b.name);
+          case 'descending':
+            return b.name.localeCompare(a.name);
+          default:
+            return 0;
+        }
+      });
+
+      return filtered;
+    },
 },
   watch: {
     selectedRowsPerPage() {

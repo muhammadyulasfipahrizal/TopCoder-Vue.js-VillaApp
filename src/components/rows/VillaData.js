@@ -7,7 +7,7 @@ export default [
         price: 'Rp 125.000',
         capacity: '2-4 People',
         amenities: 'Toilet, Free Wifi',
-        availableDate: '2023-03-28'
+        availableDates: ['2023-03-30', '2023-03-31', '2023-04-01'],
     },
     {
         id: 2,
@@ -17,7 +17,7 @@ export default [
         price: 'Rp 200.000',
         capacity: '4-6 People',
         amenities: 'Toilet, Free Wifi, Private Pool',
-        availableDate: '2023-03-29'
+        availableDates: ['2023-03-01', '2023-03-31', '2023-04-01'],
     },
     {
         id: 3,
@@ -27,7 +27,7 @@ export default [
         price: 'Rp 350.000',
         capacity: '6-8 People',
         amenities: 'Toilet, Free Wifi, Private Beach Access',
-        availableDate: '2023-03-30'
+        availableDates: ['2023-03-02', '2023-03-31', '2023-04-01'],
     },
     {
         id: 4,
@@ -36,7 +36,8 @@ export default [
         location: 'Puncak, West Java',
         price: 'Rp 175.000',
         capacity: '2-4 People',
-        amenities: 'Toilet, Free Wifi, Fireplace',
+        amenities: 'Toilet, Free Wifi',
+        availableDates: ['2023-03-30', '2023-03-31', '2023-04-01'],
     },
     {
         id: 5,
@@ -46,6 +47,7 @@ export default [
         price: 'Rp 220.000',
         capacity: '4-6 People',
         amenities: 'Toilet, Free Wifi, Swimming Pool',
+        availableDates: ['2023-03-30', '2023-03-31', '2023-04-01'],
     },
     {
         id: 6,
@@ -55,6 +57,7 @@ export default [
         price: 'Rp 300.000',
         capacity: '6-8 People',
         amenities: 'Toilet, Free Wifi, Spa',
+        availableDates: ['2023-03-30', '2023-03-31', '2023-04-01'],
     },
     {
         id: 7,
@@ -64,6 +67,7 @@ export default [
         price: 'Rp 400.000',
         capacity: '8-10 People',
         amenities: 'Toilet, Free Wifi, Private Beach',
+        availableDates: ['2023-03-30', '2023-03-31', '2023-04-01'],
     },
     {
         id: 8,
@@ -73,6 +77,7 @@ export default [
         price: 'Rp 150.000',
         capacity: '2-4 People',
         amenities: 'Toilet, Free Wifi, Gym',
+        availableDates: ['2023-03-30', '2023-03-31', '2023-04-01'],
     },
     {
         id: 9,
@@ -82,6 +87,7 @@ export default [
         price: 'Rp 500.000',
         capacity: '8-10 People',
         amenities: 'Toilet, Free Wifi, Private Pool, Sea View',
+        availableDates: ['2023-03-30', '2023-03-31', '2023-04-01'],
     },
     {
         id: 10,
@@ -91,6 +97,7 @@ export default [
         price: 'Rp 200.000',
         capacity: '4-6 People',
         amenities: 'Toilet, Free Wifi, BBQ',
+        availableDates: ['2023-03-30', '2023-03-31', '2023-04-01'],
     },
     {
         id: 11,
@@ -100,6 +107,7 @@ export default [
         price: 'Rp 175.000',
         capacity: '2-4 People',
         amenities: 'Toilet, Free Wifi, Garden',
+        availableDates: ['2023-03-30', '2023-03-31', '2023-04-01'],
     },
     {
         id: 12,
@@ -109,6 +117,7 @@ export default [
         price: 'Rp 250.000',
         capacity: '4-6 People',
         amenities: 'Toilet, Free Wifi, Surfboards',
+        availableDates: ['2023-03-30', '2023-03-31', '2023-04-01'],
     },
     {
         id: 13,
@@ -118,6 +127,7 @@ export default [
         price: 'Rp 450.000',
         capacity: '8-10 People',
         amenities: 'Toilet, Free Wifi, Swimming Pool, Mountain View',
+        availableDates: ['2023-03-30', '2023-03-31', '2023-04-01'],
     },
     {
         id: 14,
@@ -127,6 +137,7 @@ export default [
         price: 'Rp 300.000',
         capacity: '2-4 People',
         amenities: 'Toilet, Free Wifi, Jungle View',
+        availableDates: ['2023-03-30', '2023-03-31', '2023-04-01'],
     },
     {
         id: 15,
@@ -136,6 +147,7 @@ export default [
         price: 'Rp 550.000',
         capacity: '8-10 People',
         amenities: 'Toilet, Free Wifi, Private Pool, Ocean View',
+        availableDates: ['2023-03-30', '2023-03-31', '2023-04-01'],
     },
     {
         id: 16,
@@ -145,6 +157,7 @@ export default [
         price: 'Rp 175.000',
         capacity: '2-4 People',
         amenities: 'Toilet, Free Wifi, Fishing',
+        availableDates: ['2023-03-30', '2023-03-31', '2023-04-01'],
     },
     {
         id: 17,
@@ -154,6 +167,7 @@ export default [
         price: 'Rp 350.000',
         capacity: '6-8 People',
         amenities: 'Toilet, Free Wifi, Private Pool, Beach Access',
+        availableDates: ['2023-03-30', '2023-03-31', '2023-04-01'],
     },
     {
         id: 18,
@@ -163,6 +177,7 @@ export default [
         price: 'Rp 400.000',
         capacity: '8-10 People',
         amenities: 'Toilet, Free Wifi, Private Pool, Beachfront',
+        availableDates: ['2023-03-30', '2023-03-31', '2023-04-01'],
     },
     {
         id: 19,
@@ -172,6 +187,7 @@ export default [
         price: 'Rp 250.000',
         capacity: '4-6 People',
         amenities: 'Toilet, Free Wifi, Gym, City View',
+        availableDates: ['2023-03-30', '2023-03-31', '2023-04-01'],
     },
     {
         id: 20,
@@ -181,5 +197,6 @@ export default [
         price: 'Rp 300.000',
         capacity: '2-4 People',
         amenities: 'Toilet, Free Wifi, River View, Canoe',
+        availableDates: ['2023-03-30', '2023-03-31', '2023-04-01'],
     },
   ];
