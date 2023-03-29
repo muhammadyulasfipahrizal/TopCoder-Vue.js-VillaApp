@@ -18,6 +18,9 @@
       :capacity="villa.capacity"
       :amenities="villa.amenities"
     />
+    <div>
+      <button @click="setSelectedDate">Set selectedDate to '2023-03-30'</button>
+    </div>
   </div>
 </template>
 
@@ -76,6 +79,7 @@ export default {
 
       // filter by selected date
       if (this.selectedDateFormatted) {
+        console.log('selectedDateFormatted', this.selectedDateFormatted);
         filtered = filtered.filter(villa => villa.availableDates.includes(this.selectedDateFormatted));
       }
 
@@ -119,7 +123,10 @@ export default {
     },
     handleSortOrderChange(sortOrder) {
       this.sortOrder = sortOrder;
-    }
+    },
+    setSelectedDate() {
+      this.selectedDate = '2023-03-30';
+    },
   },
   data() {
     return {
@@ -132,6 +139,7 @@ export default {
   },
   created() {
     this.emitter.on('selected-date', (date) => {
+      console.log('selected-date received', date);
       this.selectedDate = date;
     });
   },

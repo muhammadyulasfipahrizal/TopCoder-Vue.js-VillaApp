@@ -35,7 +35,6 @@ export default {
 </script>
 
 <style scoped>
-/* Optional: add some styling to the input */
 input {
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
