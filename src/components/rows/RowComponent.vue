@@ -140,7 +140,7 @@ export default {
   created() {
     this.emitter.on('selected-date', (date) => {
       console.log('selected-date received', date);
-      this.selectedDate = date;
+      this.filteredData = this.data.filter(item => item.date === date);
     });
   },
 }
