@@ -3,7 +3,7 @@ export default [
         id: 1,
         imageUrl: '../../assets/logo.png',
         name: 'John Doe Villa',
-        location: 'Balikpapan',
+        location: 'Kalimantan, Balikpapan',
         price: 'Rp 125.000',
         capacity: '2-4 People',
         amenities: 'Toilet, Free Wifi',
