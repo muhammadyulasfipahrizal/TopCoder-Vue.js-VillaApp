@@ -7,14 +7,6 @@
     </button>
     <ul class="dropdown-menu" aria-labelledby="filterDropdownButton">
       <li>
-        <select class="form-select" aria-label="Color filter">
-            <option selected disabled value="">Color</option>
-            <option value="red">Red</option>
-            <option value="blue">Blue</option>
-            <option value="green">Green</option>
-        </select>
-      </li>
-      <li>
         <select class="form-select" aria-label="Location filter">
             <option selected disabled value="">Location</option>
             <option value="new-york">Kalimantan</option>
@@ -29,12 +21,17 @@
             <option value="high-to-low">Rp. 200.000 - 300.000</option>
         </select>
       </li>
+      <li>
+        <select class="form-select" aria-label="Color filter">
+            <option selected disabled value="">Capacity</option>
+            <option value="red">2-4 People</option>
+            <option value="blue">4-6 People</option>
+            <option value="green">6-8 People</option>
+        </select>
+      </li>
     </ul>
   </div>  
 </template>
-
-  
-
 
 <script>
 export default {
