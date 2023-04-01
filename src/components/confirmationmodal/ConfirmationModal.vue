@@ -1,6 +1,7 @@
   <template>
+    <button class="btn btn-secondary btn-book" type="button" @click="showModal = true">Book</button>
+    <!-- modal -->
     <div>
-      <button class="btn btn-secondary" type="button" @click="showModal = true">Book Now</button>
       <div class="modal" v-if="showModal">
         <div class="modal-overlay" @click="showModal = false"></div>
         <div class="modal-container">
@@ -12,27 +13,27 @@
             <div class="row">
               <div class="col-md-6">
                 <h5>Location:</h5>
-                <p>{{ booking.location }}</p>
+                <p class="property-value">{{ location }}</p>
               </div>
               <div class="col-md-6">
                 <h5>Capacity:</h5>
-                <p>{{ booking.capacity }}</p>
+                <p class="property-value">{{ capacity }}</p>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
                 <h5>Name:</h5>
-                <p>{{ booking.name }}</p>
+                <p class="property-value">{{ name }}</p>
               </div>
               <div class="col-md-6">
                 <h5>Price:</h5>
-                <p>{{ booking.price }}</p>
+                <p class="property-value">{{ price }}</p>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
                 <h5>Facilities:</h5>
-                <p>{{ booking.facility }}</p>
+                <p class="property-value">{{ amenities }}</p>
               </div>
             </div>
           </div>
@@ -46,27 +47,27 @@
   </template>
   
   <script>
-  import VillaData from '../rows/VillaData';
 
   export default {
+    name: 'ConfirmationModal',
     data() {
       return {
         showModal: false,
-        villas: VillaData,
-        booking: {
-          name: VillaData.name,
-          location: VillaData.location,
-          capacity: VillaData.capacity,
-          price: VillaData.price,
-          facility: VillaData.facility,
-        },
       };
+    },
+    watch: {
+      showModal(value) {
+        console.log('showModal value:', value);
+      },
     },
     methods: {
       bookNow() {
         // Code to confirm booking
         this.showModal = false;
       },
+      navigateDetailScreen() {
+        this.$router.push('/detail');
+      }
     },
   };
   </script>
@@ -136,5 +137,10 @@
   
   .btn-secondary:hover {
     background-color: #5a6268;
+  }
+
+  .btn-book{
+    max-width: 50%;
+    margin: 0 auto;
   }
 </style>

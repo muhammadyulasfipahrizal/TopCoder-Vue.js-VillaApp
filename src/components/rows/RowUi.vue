@@ -88,7 +88,7 @@ export default {
         this.showModal = false;
       },
       navigateDetailScreen() {
-        this.$router.push('/detail');
+        this.$router.push({ name: 'DetailScreen', params: { id: this.id } })
       }
     },
   props: {
