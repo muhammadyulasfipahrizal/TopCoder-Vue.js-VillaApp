@@ -1,23 +1,24 @@
 <template>
-  <div class="container">
-    <img :src="imageUrl" class="villa-image"/>
-    <div class="property-column">
-      <p class="property-value">{{ name }}</p>
+  <div>
+    <div class="container" @dblclick="navigateDetailScreen">
+      <img :src="imageUrl" class="villa-image"/>
+      <div class="property-column">
+        <p class="property-value">{{ name }}</p>
+      </div>
+      <div class="property-column">
+        <p class="property-value">{{ location }}</p>
+      </div>
+      <div class="property-column">
+        <p class="property-value">{{ price }}</p>
+      </div>
+      <div class="property-column">
+        <p class="property-value">{{ capacity }}</p>
+      </div>
+      <div class="property-column">
+        <p class="property-value">{{ amenities }}</p>
+      </div>
+      <button class="btn btn-secondary btn-book" type="button" @click="showModal = true">Book</button>
     </div>
-    <div class="property-column">
-      <p class="property-value">{{ location }}</p>
-    </div>
-    <div class="property-column">
-      <p class="property-value">{{ price }}</p>
-    </div>
-    <div class="property-column">
-      <p class="property-value">{{ capacity }}</p>
-    </div>
-    <div class="property-column">
-      <p class="property-value">{{ amenities }}</p>
-    </div>
-
-    <button class="btn btn-secondary btn-book" type="button" @click="showModal = true">Book</button>
 
     <!-- modal -->
     <div>
@@ -86,6 +87,9 @@ export default {
         // Code to confirm booking
         this.showModal = false;
       },
+      navigateDetailScreen() {
+        this.$router.push('/detail');
+      }
     },
   props: {
     imageUrl: {
@@ -123,6 +127,7 @@ export default {
   align-items: center;
   margin-top: 25px;
   margin-bottom: 50px;
+  cursor: pointer;
 }
 
 .villa-image {

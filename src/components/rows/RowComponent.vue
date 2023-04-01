@@ -23,9 +23,7 @@
       :capacity="villa.capacity"
       :amenities="villa.amenities"
     />
-    <div>
-      <button @click="setSelectedDate">Set selectedDate to '2023-03-30'</button>
-    </div>
+    <button class="btn btn-secondary btn-loadmore" @click="loadCount += 5">Load More +</button>
   </div>
 </template>
 
@@ -42,16 +40,15 @@ import RowUi from './RowUi.vue';
 
 import VillaData from './VillaData.js';
 
-
 export default {
   name: "RowComponent",
   components: {
     RowUi,
     StartDate,
-    LoadNumber,
     FilterInput,
     SortInput,
     SearchInput,
+    LoadNumber,
     ListProperty
   },
   props: {
@@ -61,6 +58,9 @@ export default {
     },
   },
   computed: {
+    numItemsToShow() {
+      return this.selectedRowsPerPage + this.loadCount;
+    },
     selectedDateFormatted() {
       if (!this.selectedDate) {
         return null;
@@ -72,7 +72,7 @@ export default {
       return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
     },
     slicedVillas() {
-      return this.filteredVillas.slice(0, this.selectedRowsPerPage);
+      return this.filteredVillas.slice(0, this.numItemsToShow);
     },
     filteredVillas() {
       let filtered = this.villas;
@@ -140,16 +140,13 @@ export default {
         this.$emit('update:selected-rows-per-page', selectedRowsPerPage);
     },
     handleLoadNumberChange(loadNumber) {
-      this.$emit('update:selected-rows-per-page', loadNumber);
+      this.loadCount = loadNumber;
     },
     updateSearchTerm(term) {
       this.searchTerm = term;
     },
     handleSortOrderChange(sortOrder) {
       this.sortOrder = sortOrder;
-    },
-    setSelectedDate() {
-      this.selectedDate = '2023-03-30';
     },
   },
   data() {
@@ -161,6 +158,7 @@ export default {
       capacityFilter: '',
       villas: VillaData,
       selectedDate: null,
+      loadCount: 0,
       emitter: mitt(),
     };
   },
@@ -204,4 +202,9 @@ export default {
 .search-input {
   margin-top: 40px;
 }
+
+.btn-loadmore {
+  margin-bottom: 20px;
+}
+
 </style>

@@ -1,15 +1,10 @@
 <template>
-  <VillaScreen msg="Welcome To Pahri's Topcoder Villa App"/>
+  <router-view></router-view>
 </template>
 
 <script>
-import VillaScreen from './components/VillaScreen'
-
 export default {
   name: 'App',
-  components: {
-    VillaScreen
-  }
 }
 </script>
 
@@ -23,3 +18,4 @@ export default {
   margin-top: 60px;
 }
 </style>
+  

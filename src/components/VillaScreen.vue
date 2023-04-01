@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="title">{{ msg }}</h1>
+    <h1 class="title">Welcome To Pahri's Topcoder Vue.js Villa App</h1>
     <RowComponent :selected-rows-per-page="selectedRowsPerPage" @update:selected-rows-per-page="handleSelectedRowsPerPageUpdate"  />
   </div>
 </template>
