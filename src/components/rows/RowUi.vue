@@ -16,13 +16,18 @@
     <div class="property-column">
       <p class="property-value">{{ amenities }}</p>
     </div>
-    <button class="btn btn-secondary btn-book">Book</button>
+    <ConfirmationModal/>
   </div>
 </template>
 
 <script>
+import ConfirmationModal from '../confirmationmodal/ConfirmationModal.vue';
+
 export default {
   name: 'RowUi',
+  components:{
+    ConfirmationModal
+  },
   props: {
     imageUrl: {
       type: String,
