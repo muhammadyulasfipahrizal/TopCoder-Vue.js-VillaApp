@@ -3,7 +3,12 @@
     <div class="list-input">
       <load-number @updateLoadNumber="handleLoadNumberChange" class="input input-align" />
       <StartDate v-model="selectedDate" class="input input-align"/>
-      <FilterInput class="input input-align" />
+      <FilterInput 
+          class="input input-align" 
+          @filter-location="locationFilter = $event"
+          @filter-price="priceFilter = $event"
+          @filter-capacity="capacityFilter = $event"
+        />
       <SortInput @update-sort-order="handleSortOrderChange" class="input input-align" />
       <SearchInput @update-search-term="updateSearchTerm" @search="performSearch" class="search-input" />
     </div>
@@ -83,6 +88,26 @@ export default {
         filtered = filtered.filter(villa => villa.availableDates.includes(this.selectedDateFormatted));
       }
 
+      // filter by selected location
+      if (this.locationFilter !== '') {
+        console.log('selected location', this.locationFilter);
+        filtered = filtered.filter(villa => villa.location.toLowerCase().includes(this.locationFilter.toLowerCase()));
+      }
+
+      // filter by selected price range
+      if (this.priceFilter !== '') {
+        console.log('selected price', this.priceFilter);
+        const [minPrice, maxPrice] = this.priceFilter.split('-');
+        filtered = filtered.filter(villa => villa.price >= Number(minPrice) && villa.price <= Number(maxPrice));
+      }
+
+      // filter by selected capacity
+      if (this.capacityFilter !== '') {
+        console.log('selected capacity', this.locationFilter);
+        const [minCapacity, maxCapacity] = this.capacityFilter.split('-');
+        filtered = filtered.filter(villa => villa.capacity >= Number(minCapacity) && villa.capacity <= Number(maxCapacity));
+      }
+
       // sort by selected order
       filtered = filtered.sort((a, b) => {
         switch (this.sortOrder) {
@@ -94,9 +119,8 @@ export default {
             return 0;
         }
       });
-
       return filtered;
-    },
+  },
 },
   watch: {
     selectedRowsPerPage() {
@@ -130,8 +154,11 @@ export default {
   },
   data() {
     return {
-      searchTerm: '',
+      searchTerm: '', 
       sortOrder: '',
+      locationFilter: '',
+      priceFilter: '',
+      capacityFilter: '',
       villas: VillaData,
       selectedDate: null,
       emitter: mitt(),
