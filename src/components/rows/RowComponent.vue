@@ -13,16 +13,17 @@
       <SearchInput @update-search-term="updateSearchTerm" @search="performSearch" class="search-input" />
     </div>
     <ListProperty/>
-    <RowUi
-      v-for="villa in slicedVillas"
-      :key="villa.id"
-      :image-url="villa.imageUrl"
-      :name="villa.name"
-      :location="villa.location"
-      :price="villa.price"
-      :capacity="villa.capacity"
-      :amenities="villa.amenities"
-    />
+      <RowUi
+        v-for="villa in slicedVillas"
+        :key="villa.id"
+        :image-url="villa.imageUrl"
+        :name="villa.name"
+        :location="villa.location"
+        :price="villa.price"
+        :capacity="villa.capacity"
+        :amenities="villa.amenities"
+        @book-clicked="handleBookClicked"
+      />
     <button class="btn btn-secondary btn-loadmore" @click="loadCount += 5">Load More +</button>
   </div>
 </template>

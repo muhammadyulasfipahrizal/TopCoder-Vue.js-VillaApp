@@ -12,7 +12,7 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         { path: '/', component: VillaScreen },
-        { path: '/DetailScreen/:id', name: 'DetailScreen', component: DetailScreen }
+        { path: '/DetailScreen', name: 'DetailScreen', component: DetailScreen, props: true }
     ]
   })
 

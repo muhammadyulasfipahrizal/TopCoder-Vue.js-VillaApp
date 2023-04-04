@@ -17,7 +17,7 @@
       <div class="property-column">
         <p class="property-value">{{ amenities }}</p>
       </div>
-      <button class="btn btn-secondary btn-book" type="button" @click="showModal = true">Book</button>
+      <button class="btn btn-secondary btn-book" type="button" @click=handleBookClick>Book</button>
     </div>
 
     <!-- modal -->
@@ -77,19 +77,13 @@ export default {
         showModal: false,
       };
     },
-    watch: {
-      showModal(value) {
-        console.log('showModal value:', value);
-      },
-    },
     methods: {
       bookNow() {
-        // Code to confirm booking
         this.showModal = false;
       },
       navigateDetailScreen() {
-        this.$router.push({ name: 'DetailScreen', params: { id: this.id } })
-      }
+        this.$router.push({ name: 'DetailScreen'});
+      },
     },
   props: {
     imageUrl: {

@@ -8,7 +8,7 @@
         </div>
         <div class="name-image">
             <div class="name">
-                <p>{{ rowData.name }}</p>
+                <p>John Doe Villa</p>
                 <p>Balikpapan, East Kalimantan</p>
                 <p>Rp. 125.000</p>
             </div>
@@ -60,27 +60,27 @@
               <div class="row">
                 <div class="col-md-6">
                   <h5>Location:</h5>
-                  <p class="property-value">{{ location }}</p>
+                  <p class="property-value">Balikpapan, East Kalimantan</p>
                 </div>
                 <div class="col-md-6">
                   <h5>Capacity:</h5>
-                  <p class="property-value">{{ capacity }}</p>
+                  <p class="property-value">2-4 People</p>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <h5>Name:</h5>
-                  <p class="property-value">{{ name }}</p>
+                  <p class="property-value">John Doe Villa</p>
                 </div>
                 <div class="col-md-6">
                   <h5>Price:</h5>
-                  <p class="property-value">{{ price }}</p>
+                  <p class="property-value">Rp. 125.000</p>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
                   <h5>Facilities:</h5>
-                  <p class="property-value">{{ amenities }}</p>
+                  <p class="property-value">Free Wifi</p>
                 </div>
               </div>
             </div>
@@ -98,7 +98,6 @@
 <script>
     export default {
         name: 'DetailScreen',
-        props: ['id'],
         data() {
         return {
             showModal: false,
@@ -107,14 +106,9 @@
     },
         methods: {
         bookNow() {
-            // Code to confirm booking
             this.showModal = false;
         },
     },
-        mounted() {
-        // fetch data for the row with the given ID and set it to rowData
-        this.rowData = fetchData(this.id);
-      }
 }
 </script>
 
